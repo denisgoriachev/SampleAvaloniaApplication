@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SampleAvaloniaApplication.Client.Core.ViewModels;assembly=SampleAvaloniaApplication.Client.Core"
+             xmlns:views="clr-namespace:SampleAvaloniaApplication.Client.Views;assembly=SampleAvaloniaApplication.Client"
+             xmlns:converters="clr-namespace:SampleAvaloniaApplication.Client.Converters;assembly=SampleAvaloniaApplication.Client"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="300"
+             x:Class="SampleAvaloniaApplication.Client.Views.LoginView">
+
+    <UserControl.Resources>
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </UserControl.Resources>
+
+    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding !IsBusy}">
+        <StackPanel MinWidth="384">
+            <TextBox Name="UsernameTextBox" Watermark="Username" Text="{Binding Username}" ></TextBox>
+            <TextBox Name="PasswordTextBox" Watermark="Password" PasswordChar="*" Text="{Binding Password}"></TextBox>
+            <Grid ColumnDefinitions="*,*,*" HorizontalAlignment="Center">
+                <RadioButton Name="OfflineRadioButton"
+                            Grid.Column="2"
+                            GroupName="Mode"
+                            Content="Offline"
+                            IsChecked="{Binding ClientMode, Mode=TwoWay, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Offline}" />
+            </Grid>
+            <Grid ColumnDefinitions="*, *" RowDefinitions="Auto">
+                <Button Name="LoginButton" Grid.Row="1" Grid.Column="0" Content="Enter" Command="{Binding Login}"/>
+                <Button Name="ExitButton" Grid.Row="1" Grid.Column="1" Content="Exit" Command="{Binding Exit}"/>
+            </Grid>
+            <TextBlock Text="{Binding ErrorMessage}" Classes="label error" VerticalAlignment="Stretch" TextAlignment="Center"></TextBlock>
+            <TextBlock Classes="label" Text="{Binding DevelopedBy}" TextAlignment="Center"></TextBlock>
+            <TextBlock Classes="label" Text="{Binding Version}" TextAlignment="Center"></TextBlock>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

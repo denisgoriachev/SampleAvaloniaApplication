@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:converters="clr-namespace:SampleAvaloniaApplication.Client.Converters"
+             xmlns:controls="clr-namespace:SampleAvaloniaApplication.Client.Controls"
+             x:Class="SampleAvaloniaApplication.Client.Views.Employees.EditEmployeeView">
+    <UserControl.Resources>
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+    </UserControl.Resources>
+
+    <StackPanel IsEnabled="{Binding !IsBusy}">
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="100" Width="Auto"/>
+                <ColumnDefinition MinWidth="100" Width="*"/>
+                <ColumnDefinition MinWidth="200" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Classes="label" Grid.Row="0" Grid.Column="0" Text="Username"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Model.Username}" IsReadOnly="{Binding Model.IsRegisteredOnThePortal}" />
+            <controls:MultilineTextBlock Name="UsernameValidation" Classes="error" Grid.Row="0" Grid.Column="3"/>
+
+            <TextBlock Classes="label" Grid.Row="1" Grid.Column="0" Text="Password"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Model.Password}" />
+            <TextBlock Name="PasswordValidation" Classes="error" Grid.Row="1" Grid.Column="3"/>
+
+            <TextBlock Classes="label" Grid.Row="2" Grid.Column="0" Text="First Name"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Model.FirstName}" />
+
+            <TextBlock Classes="label" Grid.Row="3" Grid.Column="0" Text="Last Name"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Model.LastName}" />
+
+            <TextBlock Classes="label" Grid.Row="4" Grid.Column="0" Text="Middle Name"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Model.MiddleName}" />
+
+            <TextBlock Classes="label" Grid.Row="5" Grid.Column="0" Text="Birth Date"/>
+            <DatePicker Name="BirthDateDatePicker" Grid.Row="5" Grid.Column="1"/>
+            <TextBlock Name="BirthDateValidation" Classes="error" Grid.Row="5" Grid.Column="3"/>
+
+            <TextBlock Classes="label" Grid.Row="6" Grid.Column="0" Text="Sex"/>
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+                <RadioButton GroupName="SexGroup" Content="Male" IsChecked="{Binding Model.Sex, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Male}"/>
+                <RadioButton GroupName="SexGroup" Content="Female" IsChecked="{Binding Model.Sex, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Female}"/>
+            </StackPanel>
+
+            <TextBlock Classes="label" Grid.Row="7" Grid.Column="0" Text="Home Address"/>
+            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Model.HomeAddress}" />
+
+            <TextBlock Classes="label" Grid.Row="8" Grid.Column="0" Text="Primary Phone"/>
+            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding Model.PrimaryPhone}" />
+
+            <TextBlock Classes="label" Grid.Row="9" Grid.Column="0" Text="Secondary Phone"/>
+            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding Model.SecondaryPhone}" />
+
+            <TextBlock Classes="label" Grid.Row="10" Grid.Column="0" Text="Email"/>
+            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Model.Email}" />
+
+            <TextBlock Classes="label" Grid.Row="11" Grid.Column="0" Text="Comment"/>
+            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding Model.Comment}" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="64" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Save" Command="{Binding Save}"/>
+            <Button Content="Cancel" Command="{Binding Cancel}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

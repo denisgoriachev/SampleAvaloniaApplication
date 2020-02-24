@@ -1,0 +1,3 @@
+﻿# Example command for package manager console
+
+Add-Migration -OutputDir "Migrations" -Name InitialCreate

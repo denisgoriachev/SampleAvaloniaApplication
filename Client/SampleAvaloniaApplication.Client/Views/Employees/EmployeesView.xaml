@@ -1,0 +1,49 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SampleAvaloniaApplication.Client.Views.Employees.EmployeesView">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="AddEmployeeButton">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Add" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <DataGrid Name="EmployeesDataGrid" CanUserSortColumns="True" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username"
+                                   Binding="{Binding Username}"
+                                   Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="Last Name"
+                                    Binding="{Binding LastName}"
+                                    Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="First Name"
+                                    Binding="{Binding FirstName}"
+                                    Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="Middle Name"
+                                    Binding="{Binding MiddleName}"
+                                    Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="Administrator"
+                                    Binding="{Binding IsSuperUser}"
+                                    Width="Auto" IsReadOnly="True" />
+                <DataGridTextColumn Header="Archived"
+                                    Binding="{Binding IsAcrhived}"
+                                    Width="Auto" IsReadOnly="True" />                
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Edit" Command="{Binding $parent[DataGrid].DataContext.EditEmployee}" />
+                                </StackPanel>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

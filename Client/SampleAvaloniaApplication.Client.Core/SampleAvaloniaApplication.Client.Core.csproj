@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="9.0.0" />
+        <PackageReference Include="CoreHtmlToImage" Version="1.0.5" />
+        <PackageReference Include="IronPdf" Version="2020.1.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.2" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.2" />
+        <PackageReference Include="ReactiveUI" Version="11.1.23" />
+        <PackageReference Include="ReactiveUI.Fody" Version="11.1.23" />
+        <PackageReference Include="ReactiveUI.Validation" Version="1.4.10" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+        <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.2" />
+        
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\SampleAvaloniaApplication.Common\SampleAvaloniaApplication.Common.csproj" />
+        <ProjectReference Include="..\SampleAvaloniaApplication.Client.Core.Data\SampleAvaloniaApplication.Client.Core.Data.csproj" />
+    </ItemGroup>
+
+</Project>
